@@ -23,7 +23,7 @@ class regist(BaseHandler):
         utel = self.get_argument('phone')
         ucollege = self.get_argument('college')
         try:
-            exist = self.db.query(User).filter(User.Utel == utel or User.Ucardnum == ucardnum).one()
+            exist = self.db.query(User).filter(User.Utel == utel or User.Ucardnum == ucardnum or User.Ualais == ualais).one()
             self.retjson['code'] = '10000'
             self.retjson['contents'] = '用户已注册'
         except Exception,e:
