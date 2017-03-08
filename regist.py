@@ -37,8 +37,8 @@ class regist(BaseHandler):
                 Ucardnum = ucardnum,
                 UregistT = '2016-09-09 12:12:12',
             )
-            self.db.merge(user)
             try:
+                self.db.merge(user)
                 self.db.commit()
                 m_id = self.db.query(User.Uid).filter(User.Utel == utel).one()
                 userimage = UserImage(
