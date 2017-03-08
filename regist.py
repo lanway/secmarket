@@ -36,7 +36,6 @@ class regist(BaseHandler):
                 Usex = usex,
                 Ucollege = ucollege,
                 Ucardnum = ucardnum,
-                UregistT = '2016-09-09 12:12:12',
                 Ustunum = '123',
             )
             try:
