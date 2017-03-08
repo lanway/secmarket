@@ -48,7 +48,7 @@ class regist(BaseHandler):
                 m_id = self.db.query(User.Uid).filter(User.Utel == utel).one()
                 print '222'
                 userimage = UserImage(
-                    UIuid = m_id,
+                    UIuid = m_id[0],
                     UIurl = "user-default-image.jpg",
                 )
                 print '333'
