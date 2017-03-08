@@ -43,13 +43,18 @@ class regist(BaseHandler):
                 self.db.merge(user)
                 print 'bbb'
                 self.db.commit()
+                print '111'
                 m_id = self.db.query(User.Uid).filter(User.Utel == utel).one()
+                print '222'
                 userimage = UserImage(
                     UIuid = m_id,
                     UIurl = "user-default-image.jpg",
                 )
+                print '333'
                 self.db.merge(userimage)
+                print '444'
                 self.db.commit()
+                print '555'
                 self.retjson['code'] = '10001'
                 self.retjson['contents'] = '注册成功'
             except Exception,e:
