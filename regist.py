@@ -37,7 +37,7 @@ class regist(BaseHandler):
                 Ucollege = ucollege,
                 Ucardnum = ucardnum,
                 UregistT = '2016-09-09 12:12:12',
-                Ustunum = 123,
+                Ustunum = '123',
             )
             try:
                 print 'aaa'
