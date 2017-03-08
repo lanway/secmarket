@@ -21,7 +21,7 @@ class Application(tornado.web.Application):
         handlers = [
 
              (r"/regist", regist),
-             
+
         ]
         tornado.web.Application.__init__(self, handlers)
         self.db = scoped_session(sessionmaker(bind=engine,

@@ -34,7 +34,9 @@ class regist(BaseHandler):
                 Ualais = ualais,
                 Usex = usex,
                 Ucollege = ucollege,
-                Ucardnum = ucardnum)
+                Ucardnum = ucardnum,
+                UregistT = '2016-09-09 12:12:12',
+            )
             self.db.merge(user)
             try:
                 self.db.commit()
