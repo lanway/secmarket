@@ -1,6 +1,8 @@
 # coding=utf-8
 import json
 
+from sqlalchemy import or_
+
 from BaseHandlerh import BaseHandler
 from Database.tables import User, UserImage
 
@@ -23,7 +25,7 @@ class regist(BaseHandler):
         utel = self.get_argument('phone')
         ucollege = self.get_argument('college')
         try:
-            exist = self.db.query(User).filter(User.Utel == utel).one()
+            exist = self.db.query(User).filter(or_(User.Utel == utel,User.Ucardnum == ucardnum ,User.Ualais == ualais)).one()
             self.retjson['code'] = '10000'
             self.retjson['contents'] = '用户已注册'
         except Exception,e:
