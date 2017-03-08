@@ -50,6 +50,7 @@ class regist(BaseHandler):
                 self.retjson['code'] = '10001'
                 self.retjson['contents'] = '注册成功'
             except Exception,e:
+                print e
                 self.retjson['code'] = '10009'
                 self.retjson['contents'] = '服务器错误'
         self.write(json.dumps(self.retjson,ensure_ascii=False,indent=2))
