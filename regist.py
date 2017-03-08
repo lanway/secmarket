@@ -27,6 +27,7 @@ class regist(BaseHandler):
             self.retjson['code'] = '10000'
             self.retjson['contents'] = '用户已注册'
         except Exception,e:
+            print 'ccc'
             upaw = md5(upaw)
             user = User(
                 Upassword=upaw,
@@ -38,7 +39,9 @@ class regist(BaseHandler):
                 UregistT = '2016-09-09 12:12:12',
             )
             try:
+                print 'aaa'
                 self.db.merge(user)
+                print 'bbb'
                 self.db.commit()
                 m_id = self.db.query(User.Uid).filter(User.Utel == utel).one()
                 userimage = UserImage(
