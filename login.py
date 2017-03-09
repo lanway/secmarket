@@ -9,7 +9,7 @@ from BaseHandlerh import BaseHandler
 from Database.tables import User
 
 
-def md5(str):  # 加密
+def my_md5(str):  # 加密
     import hashlib
     m = hashlib.md5()
     m.update(str)
@@ -25,7 +25,7 @@ class Login(BaseHandler):
         u_passwd = self.get_argument("password")
         try:
             data = self.db.query(User).filter(User.Ualais == u_username).one()
-            if data.Upassword == md5(u_passwd):
+            if data.Upassword == my_md5(u_passwd):
                 self.retjson['code'] =  '10010'
                 self.retjson['contents'] = '登录成功'
             else:
@@ -35,7 +35,7 @@ class Login(BaseHandler):
             print e
             try:
                 data = self.db.query(User).filter(User.Utel == u_username).one()
-                if data.Upassword == md5(u_passwd):
+                if data.Upassword == my_md5(u_passwd):
                     self.retjson['code'] = '10010'
                     self.retjson['contents'] = '登录成功'
                 else:
@@ -45,7 +45,7 @@ class Login(BaseHandler):
                 print e
                 try:
                     data = self.db.query(User).filter(User.Ucardnum == u_username).one()
-                    if data.Upassword == md5(u_passwd):
+                    if data.Upassword == my_md5(u_passwd):
                         self.retjson['code'] = '10010'
                         self.retjson['contents'] = '登录成功'
                     else:
