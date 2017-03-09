@@ -9,6 +9,8 @@ import  tornado.options
 import tornado.web
 from sqlalchemy.orm import scoped_session, sessionmaker
 from tornado.options import define, options
+
+from login import Login
 from regist import regist
 
 from Database.models import engine
@@ -21,6 +23,7 @@ class Application(tornado.web.Application):
         handlers = [
 
              (r"/regist", regist),
+             (r"/login",Login),
 
         ]
         tornado.web.Application.__init__(self, handlers)
