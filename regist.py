@@ -30,7 +30,7 @@ class regist(BaseHandler):
             self.retjson['contents'] = '用户电话已注册'
         except Exception,e:
             try:
-                exist = self.db.query(User).filter(User.Ucardnum== ucardnum).one()
+                exist = self.db.query(User).filter(User.Ucardnum == ucardnum).one()
                 self.retjson['code'] = '10002'
                 self.retjson['contents'] = '用户一卡通已注册'
             except Exception, e:
