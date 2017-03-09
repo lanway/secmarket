@@ -9,21 +9,23 @@ from BaseHandlerh import BaseHandler
 from Database.tables import User
 
 
+def md5(str):  # 加密
+    import hashlib
+    m = hashlib.md5()
+    m.update(str)
+    return m.hexdigest()
+
 class Login(BaseHandler):
 
     retjson = {"code": 200, "contents": "ok"}
-    def md5(str):  # 加密
-        import hashlib
-        m = hashlib.md5()
-        m.update(str)
-        return m.hexdigest()
+
 
     def post(self):
         u_username = self.get_argument("username")
         u_passwd = self.get_argument("password")
         try:
             data = self.db.query(User).filter(User.Ualais == u_username).one()
-            if data.Upassword == self.md5(u_passwd):
+            if data.Upassword == md5(u_passwd):
                 self.retjson['code'] =  '10010'
                 self.retjson['contents'] = '登录成功'
             else:
@@ -33,7 +35,7 @@ class Login(BaseHandler):
             print e
             try:
                 data = self.db.query(User).filter(User.Utel == u_username).one()
-                if data.Upassword == self.md5(u_passwd):
+                if data.Upassword == md5(u_passwd):
                     self.retjson['code'] = '10010'
                     self.retjson['contents'] = '登录成功'
                 else:
@@ -43,7 +45,7 @@ class Login(BaseHandler):
                 print e
                 try:
                     data = self.db.query(User).filter(User.Ucardnum == u_username).one()
-                    if data.Upassword == self.md5(u_passwd):
+                    if data.Upassword == md5(u_passwd):
                         self.retjson['code'] = '10010'
                         self.retjson['contents'] = '登录成功'
                     else:
