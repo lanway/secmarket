@@ -40,6 +40,7 @@ class Login(BaseHandler):
                     self.retjson['code'] = '10011'
                     self.retjson['contents'] = '密码错误'
             except Exception,e:
+                print e
                 try:
                     data = self.db.query(User).filter(User.Ucardnum == u_username).one()
                     if data.Upassword == self.md5(u_passwd):
@@ -49,6 +50,7 @@ class Login(BaseHandler):
                         self.retjson['code'] = '10011'
                         self.retjson['contents'] = '密码错误'
                 except Exception,e:
+                    print e
                     self.retjson['code'] = '10012'
                     self.retjson['contents'] = '该用户不存在，请先注册'
         self.write(json.dumps(self.retjson, ensure_ascii=False, indent=2))
