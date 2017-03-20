@@ -54,7 +54,7 @@ class Trend(Base):
     TcreatT = Column(DateTime(timezone=True), default=func.now())
     Tconcents = Column(VARCHAR(256),nullable=False) # 内容
     Tprice = Column(Float,default=0.00,nullable=False)   #价格
-    Tphone = Column(CHAR(32), nullable=False,unique=True)   # 电话，可以留不是自己的
+    Tphone = Column(CHAR(32), nullable=False)   # 电话，可以留不是自己的
     Tvalid = Column(Boolean,default=1, nullable=False) #是否有效
     TlikeN = Column(Integer,default=0,nullable=False)  #点赞数
     TtranN = Column(Integer,default=0,nullable=False)  #转发数
