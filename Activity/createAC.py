@@ -17,6 +17,7 @@ class createAC(BaseHandler):
         if type == '10100':
             m_image = self.get_argument('images')
             print m_image
+            print '111'
             m_image_json = json.loads(m_image)
             image_handler = AuthKeyHandler()
             image_tokens = image_handler.generateToken(m_image_json)
