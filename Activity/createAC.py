@@ -18,12 +18,12 @@ class createAC(BaseHandler):
             m_image = self.get_argument('images')
             print m_image
             print '111'
-            #m_image_json = json.loads(m_image)
-            #print m_image_json
-            m_image_url = m_image['image']
-            print m_image
+            m_image_json = json.loads(m_image)
+            print m_image_json
+            #m_image_url = m_image['image']
+            #print m_image
             image_handler = AuthKeyHandler()
-            image_tokens = image_handler.generateToken(m_image_url)
+            image_tokens = image_handler.generateToken(m_image_json)
             self.retjson['code'] = '10101'
             self.retjson['contents'] = image_tokens
 
