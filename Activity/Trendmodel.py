@@ -31,7 +31,7 @@ class TrmodelHandler:
         TcomN=trend.TcomN,
         Tuid=trend.Tuid,
         user_image= user_headimage,
-        username=usename,
+        ualais=usename,
         trend_image=trend_images,
         )
         return tr_simply_info
