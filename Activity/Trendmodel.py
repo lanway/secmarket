@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from Database.models import get_db
-from Database.tables import UserImage, TrendImage
+from Database.tables import UserImage, TrendImage, User
 from pichandler.Upload import AuthKeyHandler
 
 
@@ -11,6 +11,8 @@ class TrmodelHandler:
         :return:  retjson
         '''
         user_headimage_url = get_db().query(UserImage).filter(UserImage.UIuid == trend.Tuid ).all()
+        use = get_db().query(User).filter(User.Uid == trend.Tuid).one()
+        usename = use.Ualais
         #todo:查找待变更为最新10个
         auth = AuthKeyHandler()
         user_headimage = auth.download_abb_url(user_headimage_url[0].UIurl)
@@ -29,6 +31,7 @@ class TrmodelHandler:
         TcomN=trend.TcomN,
         Tuid=trend.Tuid,
         user_image= user_headimage,
+        username=usename,
         trend_image=trend_images,
         )
         return tr_simply_info
