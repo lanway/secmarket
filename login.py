@@ -26,8 +26,9 @@ class Login(BaseHandler):
         try:
             data = self.db.query(User).filter(User.Ualais == u_username).one()
             if data.Upassword == my_md5(u_passwd):
+                retdata = {"uid":data.Uid,"ualais":data.Ualais}
                 self.retjson['code'] =  '10010'
-                self.retjson['contents'] = '登录成功'
+                self.retjson['contents'] = retdata
             else:
                 self.retjson['code'] = '10011'
                 self.retjson['contents'] = '密码错误'
@@ -36,8 +37,9 @@ class Login(BaseHandler):
             try:
                 data = self.db.query(User).filter(User.Utel == u_username).one()
                 if data.Upassword == my_md5(u_passwd):
+                    retdata = {"uid": data.Uid, "ualais": data.Ualais}
                     self.retjson['code'] = '10010'
-                    self.retjson['contents'] = '登录成功'
+                    self.retjson['contents'] = retdata
                 else:
                     self.retjson['code'] = '10011'
                     self.retjson['contents'] = '密码错误'
@@ -46,8 +48,9 @@ class Login(BaseHandler):
                 try:
                     data = self.db.query(User).filter(User.Ucardnum == u_username).one()
                     if data.Upassword == my_md5(u_passwd):
+                        retdata = {"uid": data.Uid, "ualais": data.Ualais}
                         self.retjson['code'] = '10010'
-                        self.retjson['contents'] = '登录成功'
+                        self.retjson['contents'] = retdata
                     else:
                         self.retjson['code'] = '10011'
                         self.retjson['contents'] = '密码错误'
