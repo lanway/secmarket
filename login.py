@@ -6,7 +6,8 @@
 import json
 
 from BaseHandlerh import BaseHandler
-from Database.tables import User
+from Database.tables import User, UserImage
+from pichandler.Upload import AuthKeyHandler
 
 
 def my_md5(str):  # 加密
@@ -26,7 +27,9 @@ class Login(BaseHandler):
         try:
             data = self.db.query(User).filter(User.Ualais == u_username).one()
             if data.Upassword == my_md5(u_passwd):
-                retdata = {"uid":data.Uid,"ualais":data.Ualais}
+                Userimage = self.db.query(UserImage).filter(UserImage.UIuid == data.Uid, UserImage.UIvalid == 1).one()
+                auth = AuthKeyHandler()
+                retdata = {"uid": data.Uid, "ualais": data.Ualais, "uimage": auth.download_abb_url(Userimage.UIurl)}
                 self.retjson['code'] =  '10010'
                 self.retjson['contents'] = retdata
             else:
@@ -37,7 +40,9 @@ class Login(BaseHandler):
             try:
                 data = self.db.query(User).filter(User.Utel == u_username).one()
                 if data.Upassword == my_md5(u_passwd):
-                    retdata = {"uid": data.Uid, "ualais": data.Ualais}
+                    Userimage = self.db.query(UserImage).filter(UserImage.UIuid == data.Uid,UserImage.UIvalid == 1).one()
+                    auth = AuthKeyHandler()
+                    retdata = {"uid": data.Uid, "ualais": data.Ualais,"uimage":auth.download_abb_url(Userimage.UIurl)}
                     self.retjson['code'] = '10010'
                     self.retjson['contents'] = retdata
                 else:
@@ -48,7 +53,11 @@ class Login(BaseHandler):
                 try:
                     data = self.db.query(User).filter(User.Ucardnum == u_username).one()
                     if data.Upassword == my_md5(u_passwd):
-                        retdata = {"uid": data.Uid, "ualais": data.Ualais}
+                        Userimage = self.db.query(UserImage).filter(UserImage.UIuid == data.Uid,
+                                                                    UserImage.UIvalid == 1).one()
+                        auth = AuthKeyHandler()
+                        retdata = {"uid": data.Uid, "ualais": data.Ualais,
+                                   "uimage": auth.download_abb_url(Userimage.UIurl)}
                         self.retjson['code'] = '10010'
                         self.retjson['contents'] = retdata
                     else:
