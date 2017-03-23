@@ -48,7 +48,7 @@ class createAC(BaseHandler):
                 image_list = json.loads(images)
                 if imagehandler.insert_trand_image(image_list,trend[len(trend)-1].Tid):
                     self.retjson["code"] = '10202'
-                    self.retjson['contents'] = '创建交易成功'
+                    self.retjson['contents'] = '上传成功'
                 else:
                     self.retjson["code"] = '10203'
                     self.retjson['contents'] = '服务器内部错误,创建失败'
