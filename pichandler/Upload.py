@@ -24,7 +24,7 @@ class AuthKeyHandler:
        tokens = []
        for title in names:
            print 'title:',title
-           token = self.Auth_key.upload_token(bucket_name, title, 345600)
+           token = self.Auth_key.upload_token(bucket_name, expires=345600)
            self.auth_tokens.append(token)
        return self.auth_tokens
     def get_auth_key(self):
