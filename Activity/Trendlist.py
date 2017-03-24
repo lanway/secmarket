@@ -5,7 +5,7 @@ from sqlalchemy import desc
 
 from Activity.Trendmodel import TrmodelHandler
 from BaseHandlerh import BaseHandler
-from Database import Trend
+from Database.tables import Trend
 
 
 class Trendlist(BaseHandler):

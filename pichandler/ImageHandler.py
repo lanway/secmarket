@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from Database import TrendImage
-from Database import get_db
+from Database.models import get_db
 
 
 class ImageHandler(object):

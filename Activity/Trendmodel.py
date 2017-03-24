@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from Database import UserImage, TrendImage, User
-from Database import get_db
+from Database.tables import UserImage, TrendImage, User
+from Database.models import get_db
 from pichandler.Upload import AuthKeyHandler
 
 

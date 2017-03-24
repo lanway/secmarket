@@ -2,7 +2,7 @@
 import json
 
 from BaseHandlerh import BaseHandler
-from Database import User, UserImage
+from Database.tables import User, UserImage
 
 
 def md5(str):  # 加密

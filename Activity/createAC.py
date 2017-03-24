@@ -2,7 +2,7 @@
 import json
 
 from BaseHandlerh import BaseHandler
-from Database import Trend
+from Database.tables import Trend
 from pichandler.ImageHandler import ImageHandler
 from pichandler.Upload import AuthKeyHandler
 
