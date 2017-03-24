@@ -13,7 +13,7 @@ from tornado.options import define, options
 from Activity.Trendlist import Trendlist
 from Activity.createAC import createAC
 from Database.models import engine
-from User.Userdetail import Userdetail
+from User.Userdetail import userdetail
 from login import Login
 from regist import regist
 
@@ -28,7 +28,7 @@ class Application(tornado.web.Application):
              (r"/login",Login),
              (r"/trend/create",createAC),
              (r"/trend/lists",Trendlist),
-             (r"/user/detail",Userdetail)
+             (r"/user/detail",userdetail)
 
         ]
         tornado.web.Application.__init__(self, handlers)

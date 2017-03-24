@@ -6,7 +6,7 @@ from Database.tables import User
 from User.Usermodel import Usermodel
 
 
-class Userdetail(BaseHandler):
+class userdetail(BaseHandler):
 
 
     retjson = {'code':'200',"contents":"ok"}
