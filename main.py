@@ -13,7 +13,7 @@ from tornado.options import define, options
 from Activity.Trendlist import Trendlist
 from Activity.createAC import createAC
 from Database.models import engine
-from User.Userdetail import userdetail
+from User.Userdetails import userdetail
 from login import Login
 from regist import regist
 
