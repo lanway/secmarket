@@ -5,7 +5,7 @@ from Database.tables import UserImage
 from pichandler.Upload import AuthKeyHandler
 
 
-class Usermodel(BaseHandler):
+class Usermodel:
 
     def detail_user_model(clas,user):
 
