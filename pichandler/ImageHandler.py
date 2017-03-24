@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from Database import TrendImage
+from Database.tables import TrendImage
 from Database.models import get_db
 
 
