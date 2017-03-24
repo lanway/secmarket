@@ -2,7 +2,7 @@
 import json
 
 from BaseHandlerh import BaseHandler
-from Database.tables import Trend
+from Database import Trend
 from pichandler.ImageHandler import ImageHandler
 from pichandler.Upload import AuthKeyHandler
 
@@ -36,7 +36,7 @@ class createAC(BaseHandler):
             my_trend = Trend(
                 Tuid=uid,
                 Tconcents=content,
-                Tprice=price,
+                Tprice=float(price),
                 Tphone=phone,
                 Ttranid=uid,
             )

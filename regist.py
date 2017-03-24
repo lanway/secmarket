@@ -1,10 +1,8 @@
 # coding=utf-8
 import json
 
-from sqlalchemy import or_
-
 from BaseHandlerh import BaseHandler
-from Database.tables import User, UserImage
+from Database import User, UserImage
 
 
 def md5(str):  # 加密
@@ -51,26 +49,18 @@ class regist(BaseHandler):
                         Ustunum = '123',
                     )
                     try:
-                        print 'aaa'
                         self.db.merge(user)
-                        print 'bbb'
                         self.db.commit()
-                        print '111'
                         m_id = self.db.query(User.Uid).filter(User.Utel == utel).one()
-                        print '222'
                         userimage = UserImage(
                             UIuid = m_id[0],
                             UIurl = "user-default-image.jpg",
                         )
-                        print '333'
                         self.db.merge(userimage)
-                        print '444'
                         self.db.commit()
-                        print '555'
                         self.retjson['code'] = '10001'
                         self.retjson['contents'] = '注册成功'
                     except Exception,e:
-                        print 'sdddd'
                         print e
                         self.retjson['code'] = '10009'
                         self.retjson['contents'] = '服务器错误'

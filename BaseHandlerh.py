@@ -2,7 +2,6 @@
 
 import tornado.web
 
-from Database import models
 
 class BaseHandler(tornado.web.RequestHandler):
 

@@ -12,10 +12,9 @@ from tornado.options import define, options
 
 from Activity.Trendlist import Trendlist
 from Activity.createAC import createAC
+from Database import engine
 from login import Login
 from regist import regist
-
-from Database.models import engine
 
 define("port", default=800, help="run on the given port", type=int)
 
