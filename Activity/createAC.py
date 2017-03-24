@@ -36,7 +36,7 @@ class createAC(BaseHandler):
             my_trend = Trend(
                 Tuid=uid,
                 Tconcents=content,
-                Tprice=float(price),
+                Tprice=price,
                 Tphone=phone,
                 Ttranid=uid,
             )
