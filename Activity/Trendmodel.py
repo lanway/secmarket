@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Database.tables import UserImage, TrendImage, User
+from Database.tables import UserImage, TrendImage, User, TrendComment
 from Database.models import get_db
 from pichandler.Upload import AuthKeyHandler
 
@@ -20,6 +20,15 @@ class TrmodelHandler:
         trend_images = []
         for trend_images_url in trend_images_urls:
             trend_images.append(auth.download_url(trend_images_url.TIurl))
+        trend_comments = get_db().query(TrendComment).filter(TrendComment.TCtid == trend.Tid,TrendComment.TCvalid == 1).all()
+        trend_co =[]
+        for trend_comment in trend_comments:
+            content = trend_comment.TCcontents
+            uid = trend_comment.TCuid
+            username = get_db().query(User).filter(User.Uid == uid).one()
+            trend_item = {'username':username.Ualais,'contents':content}
+            trend_co.append(trend_item)
+
 
         tr_simply_info = dict(
         Tid = trend.Tid,
@@ -33,5 +42,6 @@ class TrmodelHandler:
         user_image= user_headimage,
         ualais=usename,
         trend_image=trend_images,
+        trend_comment=trend_co,
         )
         return tr_simply_info

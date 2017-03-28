@@ -10,6 +10,7 @@ import tornado.web
 from sqlalchemy.orm import scoped_session, sessionmaker
 from tornado.options import define, options
 
+from Activity.Trendcomment import Trendcomment
 from Activity.Trendlist import Trendlist
 from Activity.createAC import createAC
 from Database.models import engine
@@ -28,7 +29,8 @@ class Application(tornado.web.Application):
              (r"/login",Login),
              (r"/trend/create",createAC),
              (r"/trend/lists",Trendlist),
-             (r"/user/detail",userdetail)
+             (r"/user/detail",userdetail),
+             (r"/trend/comment",Trendcomment),
 
         ]
         tornado.web.Application.__init__(self, handlers)
