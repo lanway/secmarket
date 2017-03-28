@@ -12,6 +12,7 @@ class createAC(BaseHandler):
     retjson = {"code": 200, "contents": "ok"}
     def post(self):
 
+
         type = self.get_argument('vali')
 
         if type == '10100':
